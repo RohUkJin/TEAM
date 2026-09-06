@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+
+# Env
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env.local
+docker/.env
+
+# Build
+dist/
+frontend/.next/
+frontend/out/
+backend/dist/
+
+# Logs / OS
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/

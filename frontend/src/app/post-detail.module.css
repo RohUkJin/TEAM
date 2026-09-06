@@ -1,0 +1,417 @@
+.articlePage {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 1.75rem var(--page-pad-x) 5rem;
+  animation: fadeInUp 0.4s ease both;
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 2rem;
+  color: var(--text-subtle);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.back:hover {
+  color: var(--text-color);
+}
+
+.header {
+  margin-bottom: 2.25rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4.5vw, 2.55rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
+  line-height: 1.28;
+  color: var(--text-color);
+  word-break: break-word;
+}
+
+.metaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1rem;
+}
+
+.meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.55rem;
+  font-size: 0.88rem;
+  color: var(--text-subtle);
+}
+
+.dot {
+  opacity: 0.5;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--primary-color-soft);
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.ownerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.actionLink {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-subtle);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+}
+
+.actionLink:hover:not(:disabled) {
+  color: var(--text-color);
+}
+
+.actionDanger {
+  color: var(--text-subtle);
+}
+
+.actionDanger:hover:not(:disabled) {
+  color: var(--danger-color);
+}
+
+.actionLink:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 1.25rem;
+  background: var(--danger-bg);
+  color: var(--danger-color);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+}
+
+.body {
+  white-space: pre-wrap;
+  line-height: 1.9;
+  font-size: 1.08rem;
+  letter-spacing: -0.01em;
+  color: var(--text-color);
+  word-break: break-word;
+}
+
+.blurGate {
+  position: relative;
+  min-height: min(60vh, 28rem);
+}
+
+.blurContent {
+  filter: blur(8px);
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.lockOverlay {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--header-height);
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  background: color-mix(in srgb, var(--bg-color) 72%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.lockCard {
+  width: 100%;
+  max-width: 28rem;
+  padding: 2.15rem 1.85rem 1.85rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  background: var(--bg-elevated);
+  color: var(--text-color);
+  box-shadow: var(--shadow-md);
+  text-align: left;
+}
+
+.lockTitle {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.lockHint {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--text-subtle);
+  line-height: 1.55;
+  text-align: left;
+}
+
+.lockActions {
+  display: flex;
+  gap: 0.65rem;
+  margin-top: 1.25rem;
+}
+
+.lockCard > .lockPrimary {
+  display: inline-flex;
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
+.lockPrimary,
+.lockSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  min-height: 2.85rem;
+  padding: 0.75rem 1.1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.lockPrimary {
+  border: none;
+  background: var(--primary-color);
+  color: var(--on-primary-color);
+}
+
+.lockPrimary:hover {
+  background: var(--primary-color-hover);
+}
+
+.lockSecondary {
+  border: 1px solid var(--surface-border);
+  background: transparent;
+  color: var(--text-color);
+}
+
+.lockSecondary:hover {
+  background: var(--primary-color-soft);
+  border-color: color-mix(in srgb, var(--primary-color) 35%, var(--surface-border));
+}
+
+.comments {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--surface-border);
+}
+
+.commentsTitle {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+}
+
+.commentCount {
+  color: var(--primary-color);
+}
+
+.commentList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.commentItem {
+  padding: 1.2rem 0;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.commentMeta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem 0.75rem;
+  margin-bottom: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--text-subtle);
+}
+
+.commentAuthor {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.commentMeta time {
+  margin-right: auto;
+}
+
+.commentBody {
+  white-space: pre-wrap;
+  line-height: 1.7;
+  color: var(--text-color);
+  word-break: break-word;
+}
+
+.commentEdit {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.commentEditActions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.commentForm {
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.commentLabel {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.commentAs {
+  font-weight: 500;
+  color: var(--text-subtle);
+}
+
+.commentInput {
+  width: 100%;
+  min-height: 6.5rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  background: var(--bg-elevated);
+  color: var(--text-color);
+  font: inherit;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.commentInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: var(--focus-ring);
+}
+
+.commentActions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.commentSubmit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 1.15rem;
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--primary-color);
+  color: var(--on-primary-color);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.commentSubmit:hover:not(:disabled) {
+  background: var(--primary-color-hover);
+  transform: translateY(-1px);
+}
+
+.commentSubmit:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.loginHint {
+  margin-top: 1.25rem;
+  font-size: 0.92rem;
+  color: var(--text-subtle);
+}
+
+.loginHint a {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.loginHint a:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.state,
+.empty {
+  color: var(--text-subtle);
+  font-size: 0.95rem;
+  padding: 1.25rem 0;
+}
+
+.link {
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.link:hover {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

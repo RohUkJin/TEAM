@@ -1,0 +1,787 @@
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem var(--page-pad-x) 4rem;
+  background:
+    radial-gradient(
+      90% 70% at 12% -10%,
+      var(--primary-color-soft),
+      transparent 55%
+    ),
+    var(--bg-color);
+  animation: fadeInUp 0.5s ease both;
+}
+
+.heroInner {
+  width: 100%;
+  max-width: 40rem;
+  text-align: left;
+}
+
+.eyebrow {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  margin-bottom: 0.85rem;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 7vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 1.1;
+  color: var(--text-color);
+}
+
+.tagline {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  line-height: 1.65;
+  max-width: 28rem;
+}
+
+.ctas {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.primaryCta,
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.7rem;
+  padding: 0 1.25rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: -0.02em;
+  transition:
+    background var(--transition-fast),
+    color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.primaryCta {
+  background: var(--primary-color);
+  color: var(--on-primary-color);
+}
+
+.primaryCta:hover {
+  background: var(--primary-color-hover);
+  transform: translateY(-1px);
+}
+
+.secondaryCta {
+  border: 1px solid var(--surface-border);
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+}
+
+.secondaryCta:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transform: translateY(-1px);
+}
+
+/* —— Logged-in home (velog-like) —— */
+.feedShell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 1.25rem var(--page-pad-x) 2.5rem;
+  animation: fadeInUp 0.4s ease both;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 1.75rem;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.sortGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+  justify-content: flex-end;
+}
+
+.sortChip {
+  border: none;
+  background: transparent;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text-subtle);
+  cursor: pointer;
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.sortChip:hover {
+  color: var(--text-color);
+  background: var(--primary-color-soft);
+}
+
+.sortChipActive {
+  color: var(--on-primary-color);
+  background: var(--primary-color);
+}
+
+.sortChipActive:hover {
+  color: var(--on-primary-color);
+  background: var(--primary-color-hover);
+}
+
+
+.tabs {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  padding: 0.85rem 0.1rem 0.95rem;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--text-subtle);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.tabIcon {
+  width: 1.15rem;
+  height: 1.15rem;
+  flex-shrink: 0;
+}
+
+.tab:hover {
+  color: var(--text-color);
+}
+
+.tabActive {
+  color: var(--primary-color);
+}
+
+.tabActive::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+.toolbarAction {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  transition: color var(--transition-fast);
+}
+
+.toolbarAction:hover {
+  color: var(--primary-color-hover);
+}
+
+.postsSection {
+  margin-bottom: 3rem;
+}
+
+.pagedSection {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  margin-bottom: 0;
+}
+
+.blogList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.blogItem {
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.blogItem:first-child {
+  border-top: 1px solid var(--surface-border);
+}
+
+.blogLink {
+  display: block;
+  padding: 1.35rem 0;
+  transition: opacity var(--transition-fast);
+}
+
+.blogLink:hover {
+  opacity: 0.85;
+}
+
+.blogTitle {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-color);
+}
+
+.blogMeta {
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: auto;
+  padding-top: 2rem;
+}
+
+.pagination button {
+  border: 1px solid var(--surface-border);
+  background: var(--bg-elevated);
+  color: var(--text-color);
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-md);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 0.88rem;
+  color: var(--text-subtle);
+}
+
+.expandWrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.expandButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--surface-border);
+  border-radius: 999px;
+  background: var(--bg-elevated);
+  color: var(--primary-color);
+  cursor: pointer;
+  animation: expandFloat 1.6s ease-in-out infinite;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.expandIcon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.expandButton:hover:not(:disabled) {
+  border-color: var(--primary-color);
+  background: var(--primary-color-soft);
+  color: var(--primary-color-hover);
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--primary-color) 28%, transparent);
+  animation: none;
+  transform: translateY(2px);
+}
+
+.expandButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  animation: none;
+}
+
+@keyframes expandFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .expandButton {
+    animation: none;
+  }
+}
+
+.teamsSection {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--surface-border);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.sectionTitleBlock {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.sectionTitleRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+}
+
+.sectionTitleRow h2 {
+  min-width: 0;
+}
+
+.sectionAction {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  white-space: nowrap;
+  transition: color var(--transition-fast);
+}
+
+.sectionAction:hover {
+  color: var(--primary-color-hover);
+}
+
+.sectionHead h2 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  word-break: keep-all;
+}
+
+.sectionDesc {
+  margin-top: 0.35rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: var(--text-subtle);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.sectionHead span {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  padding-top: 0.2rem;
+}
+
+.postViewToggle {
+  display: inline-flex;
+  gap: 0.2rem;
+  flex-shrink: 0;
+  padding-top: 0.1rem;
+}
+
+.postViewBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-subtle);
+  cursor: pointer;
+}
+
+.postViewBtn:hover {
+  color: var(--text-color);
+  background: var(--bg-elevated);
+}
+
+.postViewBtnActive {
+  color: var(--text-color);
+  border-color: var(--surface-border);
+  background: var(--bg-elevated);
+}
+
+.feedPostList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.feedPostItem {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--surface-border);
+}
+
+.feedPostItem:first-child {
+  border-top: 1px solid var(--surface-border);
+}
+
+.feedPostItem a {
+  display: block;
+}
+
+.feedPostTitle {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--text-color);
+  line-height: 1.4;
+  transition: color var(--transition-fast);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+.feedPostItem:hover .feedPostTitle {
+  color: var(--primary-color);
+}
+
+.feedPostExcerpt {
+  margin-top: 0.7rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.feedPostMeta {
+  margin-top: 0.75rem;
+  font-size: 0.86rem;
+  color: var(--text-subtle);
+}
+
+.cardGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.postCard {
+  background: var(--bg-elevated);
+  border-radius: 0;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  animation: fadeInUp 0.45s ease both;
+}
+
+.postCard:nth-child(1) {
+  animation-delay: 0ms;
+}
+.postCard:nth-child(2) {
+  animation-delay: 40ms;
+}
+.postCard:nth-child(3) {
+  animation-delay: 80ms;
+}
+.postCard:nth-child(4) {
+  animation-delay: 120ms;
+}
+.postCard:nth-child(n + 5) {
+  animation-delay: 160ms;
+}
+
+.postCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px color-mix(in srgb, #000 12%, transparent);
+}
+
+.postCardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1.25rem 1.2rem 1.15rem;
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.4;
+  color: var(--text-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.cardExcerpt {
+  margin-top: 0.65rem;
+  flex: 1;
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardMeta {
+  margin-top: 1.1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--surface-border);
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+}
+
+.teamGrid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.15rem;
+}
+
+.teamGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.teamGroupTitle {
+  margin: 0 0 0.85rem;
+  font-size: 0.92rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--text-muted);
+}
+
+.teamCard {
+  background: var(--bg-elevated);
+  border-radius: 0;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--surface-border);
+  min-height: 10.5rem;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.teamCard:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--primary-color) 35%, var(--surface-border));
+  box-shadow: var(--shadow-md);
+}
+
+.teamCardLink {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  height: 100%;
+  padding: 1.25rem 1.2rem 1.2rem;
+}
+
+.teamCardTop {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.teamThumb {
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.04em;
+  flex-shrink: 0;
+}
+
+.teamInfo {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.28rem;
+}
+
+.teamInfo strong {
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.teamInfo span {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+}
+
+.teamDesc {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.state,
+.empty {
+  color: var(--text-subtle);
+  font-size: 0.95rem;
+  padding: 2rem 0;
+}
+
+.emptyBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 2rem 0;
+}
+
+.error {
+  padding: 0.75rem 0.9rem;
+  margin-bottom: 1rem;
+  background: var(--danger-bg);
+  color: var(--danger-color);
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .teamGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .cardGrid,
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    align-items: stretch;
+  }
+
+  .tabs {
+    flex: 1 1 100%;
+    width: 100%;
+    gap: 0.85rem;
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .tab {
+    font-size: 0.95rem;
+    padding: 0.7rem 0.05rem 0.8rem;
+  }
+
+  .sectionHead {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+  }
+
+  .sectionTitleBlock {
+    flex: none;
+    width: 100%;
+  }
+
+  .sortGroup {
+    width: 100%;
+    flex-shrink: 1;
+    justify-content: flex-start;
+  }
+
+  .postViewToggle {
+    align-self: flex-end;
+  }
+
+  .ctas {
+    width: 100%;
+  }
+
+  .primaryCta,
+  .secondaryCta {
+    width: 100%;
+  }
+}

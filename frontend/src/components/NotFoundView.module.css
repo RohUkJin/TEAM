@@ -1,0 +1,121 @@
+.wrap {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 3rem var(--page-pad-x) 4rem;
+  min-height: calc(100dvh - var(--header-height));
+  overflow: hidden;
+  animation: notFoundIn 0.45s ease both;
+}
+
+.glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 18% 10% auto;
+  height: 14rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--primary-color) 22%, transparent),
+    transparent 72%
+  );
+  filter: blur(8px);
+  opacity: 0.9;
+}
+
+.panel {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 28rem;
+  text-align: center;
+}
+
+.code {
+  margin: 0 0 0.85rem;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 16vw, 6.5rem);
+  font-weight: 700;
+  letter-spacing: -0.08em;
+  line-height: 0.9;
+  color: transparent;
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--primary-color) 85%, var(--text-color)) 0%,
+    color-mix(in srgb, var(--primary-color) 25%, var(--text-subtle)) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  user-select: none;
+}
+
+.title {
+  margin: 0 0 0.65rem;
+  font-family: var(--font-display);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--text-color);
+}
+
+.desc {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-subtle);
+  text-align: center;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+  margin-top: 1.75rem;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--primary-color);
+  color: var(--on-primary-color);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition: background var(--transition-fast);
+}
+
+.primary:hover {
+  background: var(--primary-color-hover);
+}
+
+@keyframes notFoundIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .wrap {
+    padding-top: 2.25rem;
+    align-items: flex-start;
+  }
+
+  .primary {
+    width: 100%;
+  }
+}
