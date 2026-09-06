@@ -261,6 +261,7 @@ export function PostDetail({ postId, expectedBlogId }: Props) {
         <div className={styles.metaRow}>
           <div className={styles.meta}>
             <PostMetaStats
+              author={post.ownerNickname}
               dateLabel={formatDateTime(post.createdAt)}
               dateTime={post.createdAt}
               views={

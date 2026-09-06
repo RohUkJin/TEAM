@@ -21,8 +21,8 @@ export class CommentService {
       throw AppError.notFound("Post not found");
     }
 
+    // 댓글은 글쓰기(멤버) 권한이 아니라, 글을 읽을 수 있는 로그인 사용자면 허용
     await blogService.assertCanReadContent(post.blog_id, authenticatedUserId);
-    await blogService.assertCanWrite(post.blog_id, authenticatedUserId);
 
     const created = await commentRepository.create({
       postId,

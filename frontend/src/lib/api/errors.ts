@@ -66,43 +66,43 @@ export function toApiError(status: number, body: unknown): ApiError {
  * 500 등은 서버 원문을 그대로 노출하지 않는다.
  */
 export function getUserFacingMessage(error: ApiError): string {
-  if (error.code === "TEAM_BLOG_WEEKLY_LIMIT") {
-    return "팀 블로그는 주 1회만 만들 수 있습니다";
-  }
-  if (error.code === "TEAM_NAME_TAKEN") {
-    return "이미 사용 중인 팀 이름입니다";
-  }
-  if (error.code === "INVITE_ALREADY_EXISTS") {
-    return "아직 사용되지 않은 초대코드가 있습니다. 사용되거나 만료된 뒤 다시 발급해 주세요";
-  }
-  if (error.code === "INVITE_CREATE_FAILED") {
-    return "초대코드 발급에 실패했습니다. 다시 시도해 주세요";
-  }
-  if (error.code === "INVITE_EXPIRED") {
-    return "만료된 초대코드입니다";
-  }
-  if (error.code === "INVITE_ALREADY_USED") {
-    return "이미 사용된 초대코드입니다";
-  }
-  if (error.code === "INVITE_INVALID") {
-    return "초대코드가 올바르지 않습니다";
+  const byCode: Record<string, string> = {
+    INVALID_CREDENTIALS: "이메일 또는 비밀번호가 올바르지 않습니다",
+    EMAIL_NOT_VERIFIED: "이메일 인증이 필요합니다",
+    EMAIL_ALREADY_EXISTS: "이미 등록된 이메일입니다",
+    NICKNAME_ALREADY_EXISTS: "이미 사용 중인 닉네임입니다",
+    URL_SLUG_ALREADY_EXISTS: "이미 사용 중인 URL입니다",
+    TEAM_BLOG_WEEKLY_LIMIT: "팀 블로그는 주 1회만 만들 수 있습니다",
+    TEAM_NAME_TAKEN: "이미 사용 중인 팀 이름입니다",
+    INVITE_ALREADY_EXISTS:
+      "아직 사용되지 않은 초대코드가 있습니다. 사용되거나 만료된 뒤 다시 발급해 주세요",
+    INVITE_CREATE_FAILED: "초대코드 발급에 실패했습니다. 다시 시도해 주세요",
+    INVITE_EXPIRED: "만료된 초대코드입니다",
+    INVITE_ALREADY_USED: "이미 사용된 초대코드입니다",
+    INVITE_INVALID: "초대코드가 올바르지 않습니다",
+    NOT_BLOG_MEMBER: "이 작업을 수행할 권한이 없습니다",
+    TEAM_BLOG_LOCKED: "팀 블로그는 멤버만 볼 수 있습니다",
+  };
+
+  if (byCode[error.code]) {
+    return byCode[error.code];
   }
 
   switch (error.status) {
     case 400:
-      return error.message || "Invalid request";
+      return "요청 내용이 올바르지 않습니다";
     case 401:
-      return error.message || "Please sign in again";
+      return "다시 로그인해 주세요";
     case 403:
-      return error.message || "You do not have permission to do this";
+      return "이 작업을 수행할 권한이 없습니다";
     case 404:
-      return error.message || "The requested resource was not found";
+      return "요청한 항목을 찾을 수 없습니다";
     case 409:
-      return error.message || "This resource conflicts with existing data";
+      return "이미 존재하는 데이터와 충돌합니다";
     default:
       if (error.status >= 500) {
-        return "A server error occurred. Please try again later.";
+        return "서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요";
       }
-      return error.message || "Something went wrong";
+      return "문제가 발생했습니다. 잠시 후 다시 시도해 주세요";
   }
 }

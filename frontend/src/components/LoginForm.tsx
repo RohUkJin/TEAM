@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { ApiError } from "@/lib/api";
+import { ApiError, getUserFacingMessage } from "@/lib/api";
 import {
   hasFieldErrors,
   validateLoginInput,
@@ -48,7 +48,7 @@ export function LoginForm() {
       router.push(nextPath);
     } catch (err) {
       if (err instanceof ApiError) {
-        setApiError(err.message);
+        setApiError(getUserFacingMessage(err));
       } else {
         setApiError("로그인에 실패했습니다");
       }

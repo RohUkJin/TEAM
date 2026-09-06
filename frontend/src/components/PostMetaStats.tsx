@@ -1,6 +1,7 @@
 import styles from "./PostMetaStats.module.css";
 
 type Props = {
+  author?: string | null;
   dateLabel: string;
   dateTime?: string;
   views?: number;
@@ -35,8 +36,9 @@ function CommentIcon() {
   );
 }
 
-/** 날짜 · 👁 조회수 · 💬 댓글수 */
+/** 작성자 · 날짜 · 👁 조회수 · 💬 댓글수 */
 export function PostMetaStats({
+  author,
   dateLabel,
   dateTime,
   views,
@@ -45,9 +47,18 @@ export function PostMetaStats({
 }: Props) {
   const showViews = typeof views === "number";
   const showComments = typeof comments === "number";
+  const authorLabel = author?.trim() || null;
 
   return (
     <span className={[styles.meta, className].filter(Boolean).join(" ")}>
+      {authorLabel && (
+        <>
+          <span>{authorLabel}</span>
+          <span className={styles.sep} aria-hidden>
+            ·
+          </span>
+        </>
+      )}
       {dateTime ? <time dateTime={dateTime}>{dateLabel}</time> : dateLabel}
       {showViews && (
         <>

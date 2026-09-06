@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
-import { ApiError } from "@/lib/api";
+import { ApiError, getUserFacingMessage } from "@/lib/api";
 import {
   EMAIL_REGEX,
   hasFieldErrors,
@@ -76,7 +76,7 @@ export function RegisterForm() {
       router.push(`/verify-email?${params.toString()}`);
     } catch (err) {
       if (err instanceof ApiError) {
-        setApiError(err.message);
+        setApiError(getUserFacingMessage(err));
       } else {
         setApiError("회원가입에 실패했습니다");
       }
