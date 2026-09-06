@@ -8,6 +8,8 @@ services:
       - backend
     ports:
       - "80:80"
+      - "443:443"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
-
+      # EC2 호스트의 Let’s Encrypt 인증서만 읽기 전용으로 제공한다.
+      - /home/ec2-user/letsencrypt/etc:/etc/letsencrypt:ro
