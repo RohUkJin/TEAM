@@ -8,7 +8,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       POSTGRES_DB: ${POSTGRES_DB:-fullstack_study}
     ports:
-      - "${POSTGRES_HOST_PORT:-5433}:5432"
+      # 개발 PC에서만 접속한다. EC2에서는 DB를 인터넷에 공개하지 않는다.
+      - "127.0.0.1:${POSTGRES_HOST_PORT:-5433}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -45,7 +46,8 @@ services:
       COOKIE_SECURE: ${COOKIE_SECURE:-false}
       COOKIE_SAMESITE: ${COOKIE_SAMESITE:-lax}
     ports:
-      - "${BACKEND_HOST_PORT:-4000}:4000"
+      # reverse proxy(nginx) 또는 로컬 PC만 접근한다.
+      - "127.0.0.1:${BACKEND_HOST_PORT:-4000}:4000"
     command:
       [
         "sh",
@@ -68,7 +70,8 @@ services:
       PORT: 3000
       HOSTNAME: 0.0.0.0
     ports:
-      - "${FRONTEND_HOST_PORT:-3000}:3000"
+      # reverse proxy(nginx) 또는 로컬 PC만 접근한다.
+      - "127.0.0.1:${FRONTEND_HOST_PORT:-3000}:3000"
 
 volumes:
   postgres_data:

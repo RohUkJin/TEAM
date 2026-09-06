@@ -97,6 +97,21 @@ docker compose --env-file .env up -d --build
 | Swagger | http://localhost:4000/api/docs |
 | PostgreSQL (호스트) | localhost:5433 |
 
+### AWS EC2 데모 배포
+
+`docker/docker-compose.ec2.yml`은 Nginx를 추가해 인터넷에는 80번 포트만 공개하고,
+frontend/backend/PostgreSQL 포트는 EC2의 loopback에만 바인딩한다.
+
+```bash
+cd docker
+cp .env.ec2.example .env
+# .env의 PUBLIC_IP 두 곳과 DB/JWT 난수 값을 수정
+docker compose --env-file .env -f docker-compose.yml -f docker-compose.ec2.yml up -d --build
+```
+
+이 구성은 도메인·TLS 전 학습용 HTTP 데모다. 실제 운영 전환 시 HTTPS를 먼저 붙이고
+`NODE_ENV=production`, `COOKIE_SECURE=true`, Resend 설정을 적용한다.
+
 환경변수 예시: [`backend/.env.example`](backend/.env.example), [`backend/.env.production.example`](backend/.env.production.example), [`docker/.env.example`](docker/.env.example)
 
 ## API 상세
