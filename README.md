@@ -22,11 +22,9 @@
 
 ## 범위
 
-**포함:** 회원가입 · 이메일 인증 · JWT(HttpOnly Cookie) 로그인 · 개인/팀 블로그 · 게시글 CRUD · 댓글 · 페이징 · Swagger · Docker Compose
+**포함:** 회원가입 · 이메일 인증 · JWT(HttpOnly Cookie) 로그인 · 개인/팀 블로그 · 게시글 CRUD · 댓글 · 페이징 · Swagger · Docker Compose · Cloud
 
-**의도적 미포함:** 좋아요, 검색, 파일 업로드, OAuth, 실시간 알림 등 선택 기능
-
-**배포:** Docker까지 구성 완료. 클라우드(Oracle/AWS 등) 실배포는 미착수 — 체크리스트는 `docs/network-flow.md` 참고.
+**배포:** Docker 구성 완료. 클라우드(AWS) 실배포 완료 | 도메인 및 https 인증 완료 — 체크리스트는 `docs/network-flow.md` 참고.
 
 ## 기술 스택 (선택 · 대안 · 이유)
 
@@ -41,8 +39,8 @@
 | 비밀번호 | bcrypt | 평문/약한 해시 | 해시만 저장 |
 | 메일 | Resend (운영) / console (로컬) | SMTP 직접 | 실발송·개발 로그를 transport로 분리 |
 | API 문서 | OpenAPI + Swagger UI | 수동 markdown만 | 구현과 문서 동기화·계약 확인 |
-| Infra | Docker Compose (fe+be+db) | 로컬만 | 환경 의존성 제거·컨테이너 운영 이해 |
-| Cloud | 미착수 | Oracle / AWS | Docker 이후 단계 |
+| Infra | Docker Compose (fe+be+db) | 환경 의존성 제거·컨테이너 운영 이해 |
+| Cloud | AWS |
 
 ## 문서 지도
 
